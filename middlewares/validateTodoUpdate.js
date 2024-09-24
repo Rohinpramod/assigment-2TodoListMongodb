@@ -1,11 +1,12 @@
-const validateTodoUpdate = (req,res,next)=>{
-    const {name,completed} = req.body
+const validateTodoupdate = (req, res, next)=>{
+    const {name, completed} = req.body
     if(!name){
-        return res.status(400).json({message:"Name id required"})
+        return res.status(400).json({message: "Name is required"})
     }
-    if(completed !== undefined && typeof completed !=='boolean'){
-        return res.status(400).json({message:"completed must be a boolean value"})
+    if(completed !== undefined && typeof completed !== 'boolean'){
+        return res.status(400).json({message: "Completed must be a boolean value"})
     }
     next()
 }
-module.exports = validateTodoUpdate
+
+module.exports = validateTodoupdate
