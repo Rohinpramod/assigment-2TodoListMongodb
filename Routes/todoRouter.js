@@ -3,7 +3,8 @@ const {createTodo,
     fetchTodo,
     fetchTodoById,
     editTodoById,
-    deleteTodo
+    deleteTodo,
+    updateTodo
 } =require('../Controllers/todoControllers')
 const validateTodoUpdate = require('../middlewares/validateTodoUpdate')
 const router = express.Router();
@@ -17,5 +18,7 @@ router.get('/todo/:id',fetchTodoById);
 router.put('/todo/:id',validateTodoUpdate,editTodoById);
 
 router.delete('/todo/:id',deleteTodo);
+
+router.patch('/todo/:id',updateTodo);
 
 module.exports = router;

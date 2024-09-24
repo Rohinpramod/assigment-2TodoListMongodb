@@ -42,10 +42,20 @@ const editTodoById = async (req,res)=>{
 const deleteTodo = async (req,res)=>{
     try{
         const {id} = req.params
-        const todo = await todo.findByIdAndDelete(id)
+        const todo = await Todo.findByIdAndDelete(id)
         res.status(204).json({message: "item Found and deleted"})
     }catch(error){
         res.status(404).json({message: error.message})
+    }
+}
+
+const updateTodo = async(req,res)=>{
+    try{
+        const {id} = req.params
+        const todo = await Todo.findByIdAndUpdate(id,req.body,{new:true})
+        res.status(201).json(todo)
+    }catch(error){
+        res.status(404).json({message:error.message})
     }
 }
 
@@ -54,5 +64,6 @@ module.exports ={
     fetchTodo,
     fetchTodoById,
     editTodoById,
-    deleteTodo
+    deleteTodo,
+    updateTodo
 }
